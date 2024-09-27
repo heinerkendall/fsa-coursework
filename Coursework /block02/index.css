@@ -1,0 +1,12 @@
+body {
+    background-color: rebeccapurple
+ }
+ h1 {
+    text-decoration: underline;
+    text-align: center; 
+    color: rgb(202, 47, 68); 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
+ body {
+    color: rgb(232, 148, 79);
+ }
