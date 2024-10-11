@@ -1,0 +1,65 @@
+body {
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-areas: 'pantry items, perishable items, Frozen, Pantry, Meat' ;
+    gap: 1px;
+    padding: 1px;
+}
+
+.list {
+    font-size: x-large;
+    border-style: solid;
+    border-width: 10px;
+    width: fit-content;
+    border-color: pink aqua pink;
+    margin: 150px;
+    background-color: rgb(74, 68, 68);
+    color: white
+}
+
+.frozen {
+    border-style: solid;
+    border-width: 10px;
+    width: 250px;
+    border-color: aqua pink aqua;
+    margin: 10px;
+    background-color: beige;
+}
+
+.pantry1 {
+    border-style: solid;
+    float: right;
+    border-width: 10px;
+    width: 250px;
+    border-color: aqua pink aqua;
+    margin: 10px;
+    background-color: beige;
+}
+
+.meat {
+    border-style: solid;
+    border-width: 10px;
+    border-color: aqua pink aqua;
+    width: 250px;
+    margin: 10px;
+    background-color: beige;
+}
+
+.pantry {
+    margin: 10px;
+    border-width: 10px;
+    border-color: aqua pink aqua;
+    width: 250px;
+    float: right;
+    background-color: beige;
+    border-style: solid;
+}
+
+.perishable {
+    border-style: solid;
+    margin: top 10px;
+    border-width: 10px;
+    width: 250px;
+    border-color: aqua pink aqua;
+    margin: 10px;
+}
