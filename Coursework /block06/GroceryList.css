@@ -13,27 +13,38 @@ body {
     width: fit-content;
     border-color: pink aqua pink;
     margin: 150px;
-    background-color: rgb(74, 68, 68);
+    background-color: rgb(128, 84, 84);
     color: white
 }
 
+.pantry1 {
+    border-style: solid;
+color: white;
+    border-width: 10px;
+    width: 250px;
+    border-color: aqua pink aqua;
+    margin: 10px;
+    background-color: rgb(219, 219, 87);
+    
+}
+
+.pantry {
+    margin: 10px;
+    border-width: 10px;
+    border-color: aqua pink aqua;
+    width: 250px;
+    background-color: rgb(143, 230, 130);
+    border-style: solid;
+    padding: 10px;
+}
 .frozen {
     border-style: solid;
     border-width: 10px;
     width: 250px;
     border-color: aqua pink aqua;
     margin: 10px;
-    background-color: beige;
-}
-
-.pantry1 {
-    border-style: solid;
-    float: right;
-    border-width: 10px;
-    width: 250px;
-    border-color: aqua pink aqua;
-    margin: 10px;
-    background-color: beige;
+    background-color: rgb(234, 143, 207);
+    padding: 10px;
 }
 
 .meat {
@@ -42,18 +53,17 @@ body {
     border-color: aqua pink aqua;
     width: 250px;
     margin: 10px;
-    background-color: beige;
+    background-color: rgb(133, 211, 235);
+    color: black;
+    padding: 10px;
 }
-
-.pantry {
-    margin: 10px;
-    border-width: 10px;
-    border-color: aqua pink aqua;
+img{
     width: 250px;
-    float: right;
-    background-color: beige;
-    border-style: solid;
-}
+    margin: 10px;
+   padding-left: 300px;
+   margin: 50px;
+   border: 100px;
+    }
 
 .perishable {
     border-style: solid;
@@ -62,4 +72,18 @@ body {
     width: 250px;
     border-color: aqua pink aqua;
     margin: 10px;
+    background-color: lavender;
+    color: blueviolet;
+    padding: 10px;
 }
+.fruit {
+    border-style: solid;
+    border-width: 10px;
+    width: 250px;
+    border-color: aqua pink aqua;
+    margin: 10px;
+    background-color:rgb(236, 185, 85);
+    padding: 10px;
+}
+
+
