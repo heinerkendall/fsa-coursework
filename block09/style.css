@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(185, 142, 73);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.textboxpic{
+    margin: 180px;
+    width: 1000px;
+    position: absolute;
+}
+.textandpic{
+   z-index: -5;
+   position: absolute;
+   
+}
+.text{
+ z-index: 5;
+ margin: 380px;
+ width: 600px;
+}
