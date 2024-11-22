@@ -1,14 +1,73 @@
-.schoolhouse1 {
-margin-left: 10px;
-border: 10px;
-padding: 10px;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+
+.rectangle {
+    height: 50px;
+    width: 100px;
+    background-color: #e11fb4;
 }
-.schoolhouse2{
- margin-left: 600px;
-border: 100px;
-padding: 10px;
+
+.square {
+    height: 150px;
+    width: 150px;
+    background-color: blue;
+    z-index: 50 ;
 }
-img {
-    width: 500px;
-    height: 300px;
+
+.circle {
+    height: 50px;
+    width: 50px;
+    background-color: blueviolet;
+    border-radius: 50%;
 }
+
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #bf3535;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid #18c0b8;
+    border-bottom: 25px solid transparent;
+    z-index: 20;
+}
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-right: 50px solid #c0db25;
+    border-bottom: 25px solid transparent;
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 50px solid #32ae25;
+}
+
+.star {
+    width: 80px;  
+    aspect-ratio: 1;
+    background: #F8CA00;
+    clip-path: polygon(50% 0,
+      calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+      calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+      calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+      calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))), 
+     ); 
+  }
+
+  
