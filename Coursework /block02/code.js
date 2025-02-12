@@ -1,1 +1,0 @@
-lconsole.log("Hello Fullstack!")

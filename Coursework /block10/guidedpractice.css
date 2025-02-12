@@ -1,8 +1,0 @@
-body{
-    background-color:rgb(170, 9, 149)!important;
-}
-p:hover { background-color: orange; 
-}
-li:nth-child(even) {
-    color: green;
-  }
