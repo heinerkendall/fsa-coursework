@@ -1,123 +1,101 @@
-const COHORT = '2409-GHP-ET-WEB-PT'
-const BASE_URL = 'https://fsa-crud-2aa9294fe819.herokuapp.com/api/' + COHORT;
+const COHORT = "2409-GHP-ET-WEB-PT";
+const API_URL =
+  "https://fsa-crud-2aa9294fe819.herokuapp.com/api/" + COHORT;
 
 const state = {
-    events: [],
-}
-
-/** Updates state with event from API - KH*/
-async function getEvents() {
-    try {
-        const promise = await fetch(`${BASE_URL}` + "/events")
-        const response = await promise.json()
-        if (!response.success) {
-            throw response.console.error;
-        }
-        state.events = response.data;
-    } catch (error) {
-        alert("Unable to load Events");
-    }
-}
-
-/** Asks the API to create a new events based on the given `event` */
-async function createEvent(event) {
-    try {
-        const response = await fetch(`${BASE_URL}` + "/events", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(event),
-          })
-          
-        if (!response.ok) {
-            throw new Error(
-                "Unable to add event due to Http error: " + response.status
-            );
-        }
-    } catch (error) {
-        alert(error.message);
-    }}
-
-function renderEvents() {
-  const partyList = document.querySelector("#partyList");
-
-  if (!state.events.length) {
-    partyList.innerHTML = "<li>No events</li>";
-    return;
-  }
-
-  const eventCards = state.events.map((event) => {
-    const card = document.createElement("li");
-    //H1 for Artist Name
-    const h1 = document.createElement("h1");
-    h1.textContent = event.name;
-
-    //H2 for Artist Description
-    const h2 = document.createElement("h2");
-    h2.textContent = event.description;
-
-    //Image of Artist
-    const image = document.createElement("img");
-    image.src = event.imageUrl; //set the img src to be the imageUrl from the artist object
-    image.style.width = "50%";
-    image.style.height = "50%";
-
-
-  });
-
-  partyList.replaceChildren(...eventCards);
-}
-
-// /** Asks  the API to delete an event at the given url */ MM
-async function deleteEvent() {
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.style.display = "block";
-    deleteButton.addEventListener("click", async () => {
-        await deleteEvent(event);
-    });
-
-    card.append(h1, h2, image, deleteButton);
-    return card;
+  events: [],
 };
 
-//   eventList.replaceChildren(...eventCards);
+const form = document.getElementById("partyForm");
+const eventList = document.getElementById("partyList");
 
-
-// /** Syncs state with the API and rerender */MM
-async function render() {
-    await getEvents();
-    renderEvents();
+async function getParties() {
+  try {
+    const response = await fetch(`${API_URL}/events`);
+    const json = await response.json();
+    state.events = json.data;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
+async function createParty(partyInfo) {
+  try {
+    const response = await fetch(`${API_URL}/events`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(partyInfo),
+    });
+    const json = await response.json();
+
+    if (json.error) {
+      throw new Error(json.message);
+    }
+    render();
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deleteParty(id) {
+  try {
+    const response = await fetch(`${API_URL}/events/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error("Party could not be deleted.");
+    }
+    render();
+  } catch (err) {
+    prompt("error");
+  }
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault;
+  try {
+    const eventDate = new Date(form.eventDate.value).toISOString();
+
+    const newParty = {
+      name: form.eventname.value,
+      description: form.eventDescription.value,
+      date: eventDate,
+      location: form.eventLocation.value,
+    };
+    await createParty(newParty);
+
+    form.reset();
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+async function render() {
+  await getParties();
+  renderEvents();
+}
+
+function renderEvents() {
+  const eventDetails = state.events.map((event) => {
+    const eventDate = new Date(event.date).toLocaleString();
+    const eventCard = document.createElement("section");
+    eventCard.innerHTML = `
+      <div>
+        <h3>${event.name}</h3>
+        <p>${event.description}</p>
+        <p>${event.date}</p>
+        <p>${event.location}</p>
+      </div>
+    `;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete Event";
+    eventCard.append(deleteButton);
+    deleteButton.addEventListener("click", () => deleteParty(event.id));
+    return eventCard;
+  });
+
+  eventList.replaceChildren(...eventDetails);
+}
 
 render();
-
-
-
-// TODO: Add events with form data when the form is submitted DR
-
-const form = document.getElementById("partyForm")
-form.addEventListener('submit', async(event) => {
-    event.preventDefault();
-    try {
-        const eventDate = new Date(form.eventDate.value);
-
-        const newParty = {
-            name: form.eventName.value,
-            description: form.eventDescription.value,  //description instead of decription
-            date: eventDate.toISOString(),
-            location: form.eventLocation.value,
-            name: "test"
-      
-          };
-        console.log (newParty)
-    await createEvent (newParty)
-    } catch (error) {
-        console.log(error)
-    }
-})
-//TODO:  Look at the HTML.  What elements need event listeners attached?  What will we do 
-
-//when the event happens?  (what function will we call?  (getEvents, deleteEvent, createEvent))
