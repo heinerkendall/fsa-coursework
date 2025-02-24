@@ -1,19 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
+import { useState } from "react";
+import ContactList from "./components/ContactList";
+import SelectedContact from "./components/SelectedContact.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [SelectedContactId, setSelectedContactId] = useState(null);
 
   return (
     <>
-      <div>
-        
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {SelectedContactId ? (
+        <SelectedContact setSelectedContactId={setSelectedContactId} SelectedContactId={SelectedContactId}/>
+      ) : (
+        <ContactList setSelectedContactId={setSelectedContactId}  />
+      )}
     </>
-  )
+  );
 }
-
-export default App
