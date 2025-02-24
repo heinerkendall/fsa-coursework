@@ -111,5 +111,5 @@ INSERT INTO employees(name, department_id) VALUES('Donna', (SELECT id from depar
   await client.query(SQL);
   app.listen(3000, () => console.log("listening on port 3000"));
 };
-
+//init//
 init();
